@@ -39,6 +39,8 @@ class DoubleList:
 
 
     # append a new node to the end of the list
+    # I am assuming we are not using a circular list, the lecture touches on it but the interface
+    # does not explicitly demand it.
     def append(self, value):
         new_node = Node(value)
         # if we have an empty list, make this item the first
@@ -47,9 +49,12 @@ class DoubleList:
         else:
             # find the last opening
             current_node = self.first
-            while current_node is not None:
+            while current_node.next is not None:
                 current_node = current_node.next
+            # in order to append, we attach the new node as the next
             current_node.next = new_node
+            # and the current_node as previous in our new node.
+            new_node.prev = current_node
 
 
     # insert into a node, with several cases depending on where we insert the new node
@@ -69,36 +74,46 @@ class DoubleList:
             if index == 0:
                 self.first = new_node
                 new_node.next = current_node
+                current_node.prev = new_node
             # else, find where we are inserting, and reassign the pointers to now add our node to the chain
             else:
                 # traverse the DLL
                 for i in range(index-1):
                     current_node = current_node.next
+                # attach the "left side" chain
                 next_node = current_node.next
                 current_node.next = new_node
+                new_node.prev = current_node
+                # attach the "right side" chain
                 # if there is a non-None value in the chain, add it to our next
                 if next_node is not None:
                     new_node.next = next_node
+                    next_node.prev = new_node
 
 
 
     # remove target node in the DLL
     def remove(self, index):
         # if we are out of range, throw an error
-        if self.size < index or index < 0:
+        if self.size() < index or index < 0:
             raise IndexError("[!] Error: List index out of range.")
         else:
             # else, traverse the list for the target index
             current_node = self.first
             # if we're removing the first item, reassign the pointers for first
             if index == 0:
-                self.first = self.next.next
+                self.first = self.first.next
+                # we must also erase the previous link in the chain so it can be garbage collected
+                self.first.prev = None
             else:
                 # else, locate the target, and reassign the pointers
                 for i in range(index-1):
                     current_node = current_node.next
                 if current_node is not None:
                     current_node.next = current_node.next.next
+                    # we shrink the list by re-assigning the previous link
+                    if current_node.next is not None:
+                        current_node.next.prev = current_node
                 else:
                     current_node.next = None
 
@@ -128,6 +143,7 @@ class DoubleList:
             return_string += current_node.data.__str__()
             if current_node.next is not None:
                 return_string += ", "
+            current_node = current_node.next
         return_string += "]"
         return return_string
 
