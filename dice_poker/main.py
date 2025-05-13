@@ -37,8 +37,6 @@ def prompt_message(in_message, in_choices):
         ),
     ]
 
-
-
     # parse and return the response
     answer = inquirer.prompt(question)
      # clears the terminal on both windows and linux

@@ -3,12 +3,13 @@
 # custom encoded messages, as well as encode and decode from file.
 # author: pcostjr
 # created: 11.13.2024
-# last update: 11.13.2024
+# last update: 5.12.2025
 import random
 
 # we'll be using this string for the majority of our translations
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
+# encode a message using a rotational cipher
 def encode_message():
     message = input("Please enter the message you'd like to encode: ").lower()
     key = int(input("Enter the rotational cipher key. (Press enter for a random value)") or random.randint(0,26))
@@ -31,10 +32,14 @@ def encode_message():
         with open(filename, 'w') as file:
             file.write(ciphertext)
 
+# encode a message from a text file
 def encode_file():
+    # get the filename and rotation for encoding
     filename = input("Please enter the filename of the message you'd like to encode: ")
     key = int(input("Enter the rotational cipher key. (Press enter for a random value) ") or random.randint(0,26))
 
+    # translate any alphabetical characters using the rotational cipher
+    # ignore numbers and symbols
     ciphertext = ""
     with open(filename , 'r') as file:
         message = file.read().lower()
@@ -50,6 +55,7 @@ def encode_file():
                       "[1]: Overwrite existing file with encoded message.\n"
                       "[2]: Create new file with encoded message.")
 
+    # write to file or to a new file
     if selection == "1":
         with open(filename, 'w') as file:
             file.write(ciphertext)
@@ -58,11 +64,13 @@ def encode_file():
         with open(filename, 'w') as file:
             file.write(ciphertext)
 
+# decode from a file with a given key
 def decode_file():
     filename = input("Please enter the filename of the message you'd like to decode: ")
     key = int(input("Enter the rotational cipher key. (Press enter if unknown.) ") or -1)
 
     if key == -1:
+        # if we do not know the key, guess all possible keys
         decode_unknown_key(filename)
     else:
         ciphertext = ""
@@ -103,7 +111,7 @@ def decode_unknown_key(filename):
         print(f"Used key of {key} Decoded message is:\n{ciphertext}")
 
 
-def main():
+if __name__ == "__main__":
     while True:
         print(f"Welcome to the Enigma Machine!\n"
               f"Please select an option:\n"
@@ -125,6 +133,3 @@ def main():
             exit()
         else:
             print("Invalid choice. Please try again.")
-
-if __name__ == "__main__":
-    main()
