@@ -1,5 +1,5 @@
 """
-Filename: main.py
+Filename: sqlite_main.py
 Description: Main file to be run for text_adventure.
 Author: Tony Le
 Created: 10/2/23

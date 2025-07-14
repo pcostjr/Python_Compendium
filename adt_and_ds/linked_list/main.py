@@ -1,4 +1,4 @@
-# main.py
+# sqlite_main.py
 # description: main program for Assignment 4. Runs the Deque and DLL classes through a series of tests.
 # author: pcostjr
 # created: 4.18.25

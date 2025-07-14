@@ -1,4 +1,4 @@
-# main.py
+# sqlite_main.py
 # main handler for dice poker game.
 # fields interaction between the user and dicepoker
 # author: signal
