@@ -13,6 +13,8 @@ response = int(input("Recipe List \n"
                      "3. Apple Cider: .5 Apples each\n"
                      "Which item would you like to use your apples on? (1. 2. 3.)\n"))
 
+
+
 if response == 1:
     result = int(apple / 7)
     apple = apple % 7
