@@ -4,14 +4,41 @@
 # created: 9.9.2024
 # last update: 9.12.2024
 
-apple = float(input("How many apples do you have?"))
+print(f""
+f"                               ████                    ████████                                ████                   \n"
+f"                              ░░███                   ███░░░░███                              ░░███                   \n"  
+f"  ██████   ████████  ████████  ░███   ██████   █████ ░░░    ░███  ██████   ████████  ████████  ░███   ██████   █████  \n" 
+f" ░░░░░███ ░░███░░███░░███░░███ ░███  ███░░███ ███░░     ███████  ░░░░░███ ░░███░░███░░███░░███ ░███  ███░░███ ███░░   \n"
+f"  ███████  ░███ ░███ ░███ ░███ ░███ ░███████ ░░█████   ███░░░░    ███████  ░███ ░███ ░███ ░███ ░███ ░███████ ░░█████  \n"
+f" ███░░███  ░███ ░███ ░███ ░███ ░███ ░███░░░   ░░░░███ ███      █ ███░░███  ░███ ░███ ░███ ░███ ░███ ░███░░░   ░░░░███ \n"
+f"░████████ ░███████  ░███████  █████░░██████  ██████ ░██████████░░████████ ░███████  ░███████  █████░░██████  ██████   \n"
+f" ░░░░░░░░  ░███░░░   ░███░░░  ░░░░░  ░░░░░░  ░░░░░░  ░░░░░░░░░░  ░░░░░░░░  ░███░░░   ░███░░░  ░░░░░  ░░░░░░  ░░░░░░   \n"
+f"           ░███      ░███                                                  ░███      ░███                             \n"
+f"           █████     █████                                                 █████     █████                            \n"
+f"          ░░░░░     ░░░░░                                                 ░░░░░     ░░░░░                             \n"
+"")
 
-response = int(input("Recipe List \n"
+
+def int_input(context):
+    while True:
+        try:
+            entry = int(input(context))
+            if entry >= 0:
+                return entry
+            else:
+                print("! Error. Please enter a positive value.")
+        except:
+            print("! Error. Please enter a numeric value.")
+
+apple = int_input("Please enter the number of apples.")
+
+print("Recipe List \n"
                      "============\n"
                      "1. Apple Pie: 7 Apples each\n"
                      "2. Apple Jam: 2.25 Apples each\n"
                      "3. Apple Cider: .5 Apples each\n"
-                     "Which item would you like to use your apples on? (1. 2. 3.)\n"))
+                     "Which item would you like to use your apples on? (1. 2. 3.)\n")
+response = int_input("Please select an option (1-3)")
 
 
 
