@@ -124,8 +124,8 @@ class DicePoker:
     def __str__(self):
         out_string = "-------------\n"
         for i in range(len(self.dice)):
-            out_string = out_string + (f"Die #{i + 1}: {self.dice[i].get_value()}"
-                                       f" {" " if self.keep[i] else "| Kept" }\n")
+            out_string = out_string + (f"Die #{i + 1}: {self.dice[i].get_value()}"+
+                                       f"{" " if self.keep[i] else "| Kept" }\n")
         out_string = out_string + "-------------\n"
         return out_string
 
