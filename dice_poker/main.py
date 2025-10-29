@@ -68,8 +68,7 @@ def main():
                     # turn output, shows the current state of the dice.
                     print(f"Turn {turn + 1} ({max_turn - turn} remaining):\n")
                     print(dp)
-                    choice = prompt_message("Choose which die you'd like to keep", [1,2,3,4,5,
-                                                                                    "Re-roll"])
+                    choice = prompt_message("Choose which die you'd like to keep", [1, 2, 3, 4, 5, "Re-roll"])
 
                     # skip turn or keep selection
                     if choice == "Re-roll":
