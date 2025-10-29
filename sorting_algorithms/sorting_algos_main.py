@@ -8,6 +8,7 @@
 from s01_bubble_sort import bubble_sort
 from s02_selection_sort import selection_sort
 from s03_insertion_sort import insertion_sort
+from s04_merge_sort import merge_sort
 
 
 # import libraries
@@ -85,6 +86,8 @@ def do_sort(sort_type, number_list):
             number_list, s_actions, s_loops = selection_sort(number_list)
         case "Insertion Sort":
             number_list, s_actions, s_loops = insertion_sort(number_list)
+        case "Merge Sort":
+            number_list, s_actions, s_loops = merge_sort(number_list)
     elapsed_time = time.time() - start_time
 
     # display sorted list
@@ -110,8 +113,8 @@ def main():
     while True:
         # nts: can't use line breaks on prompt message.
         response = prompt_list_message("Please choose an option:",
-                              ["Bubble Sort", "Selection Sort", "Insertion Sort", "Regenerate List",
-                               "View List Contents", "Modify List", "Exit"])
+                              ["Bubble Sort", "Selection Sort", "Insertion Sort", "Merge Sort",
+                               "Regenerate List", "View List Contents", "Modify List", "Exit"])
         match response:
             case "Exit":
                 print("Goodbye!")
@@ -134,6 +137,8 @@ def main():
                 do_sort("Selection Sort", number_list[:])
             case "Insertion Sort":
                 do_sort("Insertion Sort", number_list[:])
+            case "Merge Sort":
+                do_sort("Merge Sort", number_list[:])
 
 if __name__ == "__main__":
     main()
