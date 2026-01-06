@@ -106,7 +106,7 @@ def do_sort(sort_type, number_list):
 # main method declaration
 def main():
     print(LOGO)
-    time.sleep(0.5)
+    time.sleep(0.75)
     clear_screen()
     # initial list gen
     number_list = generate_list()

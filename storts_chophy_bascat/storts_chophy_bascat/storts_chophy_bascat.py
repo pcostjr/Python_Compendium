@@ -1,5 +1,5 @@
 # storts_chophy_bascat.py
-# description: A simple terminal-based version of world
+# description: A simple terminal-based version of worldle
 # author: pcostjr
 # created: 11.03.2025
 # last update: 11.03.2025

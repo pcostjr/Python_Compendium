@@ -41,7 +41,7 @@ def encode_file():
     # translate any alphabetical characters using the rotational cipher
     # ignore numbers and symbols
     ciphertext = ""
-    with open(filename , 'r') as file:
+    with open(filename, 'r') as file:
         message = file.read().lower()
     for char in message:
         if char.isalpha():
@@ -66,34 +66,44 @@ def encode_file():
 
 # decode from a file with a given key
 def decode_file():
-    filename = input("Please enter the filename of the message you'd like to decode: ")
-    key = int(input("Enter the rotational cipher key. (Press enter if unknown.) ") or -1)
+        wait_file = True
+        while wait_file:
+            ciphertext = ""
+            try:
+                    filename = input("Please enter the filename of the message you'd like to decode: ")
+                    key = int(input("Enter the rotational cipher key. (Press enter if unknown.) ") or -1)
 
-    if key == -1:
-        # if we do not know the key, guess all possible keys
-        decode_unknown_key(filename)
-    else:
-        ciphertext = ""
-        with open(filename, 'r') as file:
-            message = file.read().lower()
-        for char in message:
-            if char.isalpha():
-                ciphertext += alphabet[(alphabet.index(char) - key) % 26]
-            else:
-                ciphertext += char
+                    if key == -1:
+                        # if we do not know the key, guess all possible keys
+                        decode_unknown_key(filename)
+                    else:
+                        with open(filename, 'r') as file:
+                            message = file.read().lower()
+                        wait_file = False
 
-        print(f"Used key of {key} Decoded message is:\n{ciphertext}")
-        selection = input("Select an option: (Press Enter to return to main menu):\n"
-                          "[1]: Overwrite existing file with decoded message.\n"
-                          "[2]: Create new file with encoded message.")
+                    for char in message:
+                        if char.isalpha():
+                            ciphertext += alphabet[(alphabet.index(char) - key) % 26]
+                        else:
+                            ciphertext += char
 
-        if selection == "1":
-            with open(filename, 'w') as file:
-                file.write(ciphertext)
-        elif selection == "2":
-            filename = input("Enter the filename you'd like to write to.")
-            with open(filename, 'w') as file:
-                file.write(ciphertext)
+                    print(f"Used key of {key} Decoded message is:\n{ciphertext}")
+                    selection = input("Select an option: (Press Enter to return to main menu):\n"
+                                      "[1]: Overwrite existing file with decoded message.\n"
+                                      "[2]: Create new file with encoded message.")
+
+                    if selection == "1":
+                        with open(filename, 'w') as file:
+                            file.write(ciphertext)
+                    elif selection == "2":
+                        filename = input("Enter the filename you'd like to write to.")
+                        with open(filename, 'w') as file:
+                            file.write(ciphertext)
+
+            except FileNotFoundError as e:
+                print("[!] Error: Invalid Filename.")
+
+
 
 # runs if the key is unknown. If this is true, print out all possible decoding combinations.
 def decode_unknown_key(filename):
