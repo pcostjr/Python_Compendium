@@ -1,6 +1,6 @@
-# die.py
+# dice.py
 # a simple Python object which simulates a playing die.
-# author: signal
+# author: pcostjr
 # created: 1.23.2025
 # last update: 1.23.2025
 
@@ -16,6 +16,7 @@ class Die:
     def roll(self):
         self.value = random.randint(1, self.faces)
 
+    # return the last rolled value of the die
     def get_value(self):
         return self.value
 
