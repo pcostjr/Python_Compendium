@@ -1,10 +1,10 @@
 # display.py
-# description: A collection of ANSI text images depicting the faces of six-sided dice.
+# description: A display driver which generates square faces of six-sided die in a terminal interface
 # author: pcostjr
 # created: 1.15.2026
-# last update: 1.15.2026
+# last update: 1.16.2026
 
-# collection of all possible layer displays for the dice
+# dictionary of all possible layer displays for the dice
 dlayer = {
     "top"       : f" ╔═══════════╗ ",
     "blank"     : f" ║           ║ ",
