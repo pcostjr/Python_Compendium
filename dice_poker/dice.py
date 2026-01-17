@@ -66,21 +66,19 @@ class Dice:
     def get_value_at(self, index):
         return self.dice[index].get_value()
 
-    # returns whether the dice is locked out
-    def is_unlocked(self, index):
-        return self.lock[index]
-
     # return the max dice value
     def get_max_dice(self):
         return self.MAX_DICE
+
+    # returns whether the dice is locked out
+    def is_unlocked(self, index):
+        return self.lock[index]
 
     # determines scoring of dice in priority order
     def score(self):
         result = ""
         for die in self.dice:
             self.dice_faces[die.get_value() - 1] += 1
-
-        print(self.dice_faces)
 
         if self.of_a_kind(5):
             print("Five of a Kind!")
@@ -98,7 +96,6 @@ class Dice:
             print("One Pair!")
         else:
             print("Oof, high die only. How'd you manage that?")
-
         return result
 
     # returns if there exists a certain amount "of a kind" in the result list
